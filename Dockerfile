@@ -15,7 +15,8 @@ RUN ENABLE_PARQUET=TRUE swift package resolve
 COPY . .
 
 # Compile with optimizations
-RUN ENABLE_PARQUET=TRUE MARCH_SKYLAKE=TRUE swift build -c release
+# RUN ENABLE_PARQUET=TRUE MARCH_SKYLAKE=TRUE swift build -c release
+RUN ENABLE_PARQUET=TRUE swift build -c release -Xswiftc -target -Xswiftc x86_64-unknown-linux-gnu -Xcc -march=x86-64 -Xcc -mtune=generic
 
 
 # ================================
